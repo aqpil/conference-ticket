@@ -5,75 +5,52 @@ import "./Form.css";
 export default function Form() {
   return (
     <main>
-      <header
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
+      <header>
         <img id="upload-icon" src={uploadIcon} alt="logo" />
         <h3>Coding Conf</h3>
       </header>
 
-      <section
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: 54,
-            marginBottom: 10,
-          }}
-        >
-          Your Journey to Coding Conf 2025 Starts Here!
-        </h1>
-        <p
-          style={{
-            fontSize: 22,
-            fontWeight: 200,
-          }}
-        >
+      <section id="intro">
+        <h1 id="intro-h1">Your Journey to Coding Conf 2025 Starts Here!</h1>
+        <p id="intro-p">
           Secure your spot at next year's biggest coding conference.
         </p>
       </section>
 
-      <form
-        style={{
-          maxWidth: 510,
-          marginTop: 30,
-        }}
-      >
-        <label>Upload Avatar</label>
-        <DragNDrop />
+      <form class="form-ticket">
+        <div class="form-ticket">
+          <label for="dnd">Upload Avatar</label>
+          <DragNDrop id="dnd" />
+          <p id="dnd-info">Upload your photo (JPG or PNG, max size: 500KB).</p>
+        </div>
 
-        <label>
-          Full Name: <input name="fullName" />
-        </label>
+        <div class="form-ticket">
+          <label for="name">Full Name</label>
+          <input type="text" name="name" id="name" />
+        </div>
 
-        <label>
-          Email Address:{" "}
-          <input name="myEmail" placeholder="example@email.com" />
-        </label>
+        <div class="form-ticket">
+          <label for="email">Email Address </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@email.com"
+          />
+        </div>
 
-        <label>
-          GitHub Username: <input name="myGithub" placeholder="@yourusername" />
-        </label>
+        <div class="form-ticket">
+          <label for="git-name">GitHub Username</label>
+          <input
+            type="text"
+            name="git-name"
+            id="git-name"
+            placeholder="@yourusername"
+          />
+        </div>
 
-        <button>Generate My Ticket</button>
+        <button id="form-submit">Generate My Ticket</button>
       </form>
     </main>
   );
 }
-
-// <label>
-// Upload Avatar: <input
-// type="file"
-// name="myAvatar"
-// accept="image/png, image/jpeg"
-// placeholder="Drag and drop or click to upload" />
-// </label>

@@ -29,8 +29,10 @@ export default function DragNDrop() {
       {...getRootProps()}
       style={{
         height: 130,
-        border: "4px dashed gray",
-        borderRadius: "3%",
+        border: "dashed",
+        borderColor: "rgba(245, 245, 245, 0.7)",
+        borderWidth: 2,
+        borderRadius: 10,
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
@@ -62,12 +64,23 @@ export default function DragNDrop() {
               border: "none",
               borderRadius: "30%",
               backgroundColor: "rgba(255, 255, 255, 0.09)",
+              borderStyle: "solid",
+              borderColor: "rgba(245, 245, 245, 0.2)",
+              borderWidth: 1,
             }}
           >
             <img src="/src/assets/images/icon-upload.svg" alt="Upload" />
           </button>
           <br />
-          <strong>Drag and drop or click to upload</strong>
+          <strong
+            style={{
+              fontSize: 17,
+              fontWeight: 100,
+              marginTop: 50,
+            }}
+          >
+            Drag and drop or click to upload
+          </strong>
         </p>
       )}
     </div>

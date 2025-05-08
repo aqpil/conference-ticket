@@ -1,18 +1,84 @@
 main {
-    margin: 0 auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 60vw;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 60vw;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #upload-icon {
-    margin: 20px;
-    width: 35px;
-    height: 35px;
+  margin: 20px;
+  width: 35px;
+  height: 35px;
 }
 
 h3 {
-    font-size: 27px;
+  font-size: 27px;
+}
+
+#intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#intro-h1 {
+  font-size: 54px;
+  margin-bottom: 10px;
+}
+
+#intro-p {
+  font-size: 22px;
+  font-weight: 200;
+}
+
+form.form-ticket {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 34vw;
+}
+
+div.form-ticket {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  gap: 0.5rem; /* Optional: spacing between label and input */
+  margin-bottom: 1.5rem; /* Optional: spacing between fields */
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.09);
+  height: 55px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: rgba(245, 245, 245, 0.7);
+  border-width: 1px;
+}
+
+label {
+  padding-right: 10px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+#dnd-info {
+  font-size: 11px;
+  font-weight: 200;
+}
+
+#form-submit {
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(242, 125, 86);
+  font-size: 20px;
+  font-weight: 600;
 }
