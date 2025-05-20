@@ -1,22 +1,12 @@
-import { useState } from "react";
 import "./Index.css";
 import Form from "./Form";
-import BackgroundDesktop from "./assets/images/BackgroundDesktop.png";
+import Background from "./Background.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div
-      style={{
-        width: "100vw",
-        minHeight: "100vh",
-        color: "white",
-        backgroundImage: `url(${BackgroundDesktop})`,
-      }}
-    >
+    <Background>
       <Form />
-    </div>
+    </Background>
   );
 }
 

@@ -21,7 +21,6 @@ export default function Form() {
         <div class="form-ticket">
           <label for="dnd">Upload Avatar</label>
           <DragNDrop id="dnd" />
-          <p id="dnd-info">Upload your photo (JPG or PNG, max size: 500KB).</p>
         </div>
 
         <div class="form-ticket">
