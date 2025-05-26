@@ -4,15 +4,23 @@ import "./dnd.css";
 
 export default function DragNDrop() {
   const [photo, setPhoto] = useState(null);
+  const [error, setError] = useState("");
 
   const onDrop = useCallback((acceptedFiles) => {
     if (acceptedFiles.length > 0) {
       const file = acceptedFiles[0];
+
+      if (file.size > 500 * 1024) {
+        setError("File too large. Please upload a photo under 500KB.");
+        return;
+      }
+
       setPhoto(
         Object.assign(file, {
           preview: URL.createObjectURL(file),
         })
       );
+      setError(""); // Clear any previous error
     }
   }, []);
 
@@ -26,6 +34,7 @@ export default function DragNDrop() {
 
   const removeImage = () => {
     setPhoto(null);
+    setError(""); // Clear error when image is removed
   };
 
   return (
@@ -68,8 +77,9 @@ export default function DragNDrop() {
           </div>
         )}
       </div>
-      <p id="dnd-info" className="dnd-info">
-        Upload your photo (JPG or PNG, max size: 500KB).
+
+      <p id="dnd-info" className={`dnd-info ${error ? "error" : ""}`}>
+        {error || "Upload your photo (JPG or PNG, max size: 500KB)."}
       </p>
     </>
   );

@@ -1,8 +1,39 @@
+import { useState } from "react";
 import DragNDrop from "./components/DragNDrop";
 import uploadIcon from "./assets/images/logo-mark.svg";
 import "./Form.css";
 
 export default function Form() {
+  const [email, setEmail] = useState("");
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true);
+    if (email && !validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+    console.log("Form submitted!");
+  };
+
   return (
     <main>
       <header>
@@ -17,29 +48,36 @@ export default function Form() {
         </p>
       </section>
 
-      <form class="form-ticket">
-        <div class="form-ticket">
-          <label for="dnd">Upload Avatar</label>
+      <form className="form-ticket" onSubmit={handleSubmit}>
+        <div className="form-ticket">
+          <label htmlFor="dnd">Upload Avatar</label>
           <DragNDrop id="dnd" />
         </div>
 
-        <div class="form-ticket">
-          <label for="name">Full Name</label>
+        <div className="form-ticket">
+          <label htmlFor="name">Full Name</label>
           <input type="text" name="name" id="name" />
         </div>
 
-        <div class="form-ticket">
-          <label for="email">Email Address </label>
+        <div className="form-ticket">
+          <label htmlFor="email">Email Address</label>
           <input
             type="email"
             name="email"
             id="email"
             placeholder="example@email.com"
+            value={email}
+            onChange={handleEmailChange}
+            onBlur={handleEmailBlur}
+            className={emailTouched && emailError ? "input-error" : ""}
           />
+          {emailTouched && emailError && (
+            <p className="email-error">{emailError}</p>
+          )}
         </div>
 
-        <div class="form-ticket">
-          <label for="git-name">GitHub Username</label>
+        <div className="form-ticket">
+          <label htmlFor="git-name">GitHub Username</label>
           <input
             type="text"
             name="git-name"
@@ -48,7 +86,9 @@ export default function Form() {
           />
         </div>
 
-        <button id="form-submit">Generate My Ticket</button>
+        <button id="form-submit" type="submit">
+          Generate My Ticket
+        </button>
       </form>
     </main>
   );

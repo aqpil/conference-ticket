@@ -75,7 +75,15 @@ input {
   outline: none;
 }
 
-input:focus {
+.email-error {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 200;
+  margin: 7px 0 0 0;
+  color: #f18480;
+}
+
+.input-error {
   box-shadow: 0 0 0 3px rgba(242, 125, 86, 0.5);
 }
 
@@ -95,11 +103,50 @@ label {
 }
 
 #form-submit {
+  font-family: "IBM Plex Mono";
   height: 60px;
   border: none;
   border-radius: 10px;
-  background-color: rgb(242, 125, 86);
+  color: #1b163e;
+  background-color: #fa715f;
   font-size: 20px;
   font-weight: 600;
   margin-top: 6px;
+}
+
+@media (min-width: 600px) and (max-width: 1150px) {
+  form.form-ticket {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    max-width: 90vw;
+  }
+
+  header {
+    margin-top: 15px;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  #upload-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  #intro-h1 {
+    font-size: 26px;
+  }
+
+  #intro-p {
+    font-size: 17px;
+  }
+
+  form.form-ticket {
+    width: 90vw;
+  }
 }

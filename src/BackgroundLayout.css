@@ -23,7 +23,7 @@
   max-width: 250px;
 }
 
-.circle2 {
+.circle-top {
   top: -7%;
   left: 4%;
   max-width: 250px;
@@ -33,6 +33,7 @@
   top: 0%;
   left: 3.5%;
 }
+
 .wave-top {
   top: 10%;
   right: 0%;
@@ -43,4 +44,46 @@
   left: -5%;
   max-width: 1000px;
   max-height: 700px;
+}
+
+.wave-bottom-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .wave-top {
+    top: 2%;
+    max-width: 120px;
+  }
+
+  .circle {
+    bottom: 33.5%;
+    right: -12%;
+    max-width: 120px;
+  }
+
+  .circle-top {
+    top: -3%;
+    left: -4%;
+    max-width: 120px;
+  }
+
+  .lines {
+    top: 0%;
+    left: 7%;
+    transform: scale(2.6);
+  }
+
+  .wave-bottom {
+    display: none;
+  }
+
+  .wave-bottom-mobile {
+    display: block;
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    max-width: 78%;
+    height: auto;
+  }
 }
