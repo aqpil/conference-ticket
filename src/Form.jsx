@@ -3,10 +3,15 @@ import DragNDrop from "./components/DragNDrop";
 import uploadIcon from "./assets/images/logo-mark.svg";
 import "./Form.css";
 
-export default function Form() {
+export default function Form({ onSubmit }) {
+  const [name, setName] = useState("");
+  const [gitName, setGitName] = useState("");
   const [email, setEmail] = useState("");
   const [emailTouched, setEmailTouched] = useState(false);
   const [emailError, setEmailError] = useState("");
+
+  // You can later update this to receive the actual image from DragNDrop
+  const [avatar, setAvatar] = useState(null);
 
   const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -27,11 +32,20 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setEmailTouched(true);
+
     if (!validateEmail(email)) {
       setEmailError("Please enter a valid email address.");
       return;
     }
-    console.log("Form submitted!");
+
+    // Send data up to App.jsx
+    onSubmit({
+      name,
+      gitName,
+      email,
+      avatar, // You can update this later to pass the uploaded image
+    });
   };
 
   return (
@@ -51,12 +65,18 @@ export default function Form() {
       <form className="form-ticket" onSubmit={handleSubmit}>
         <div className="form-ticket">
           <label htmlFor="dnd">Upload Avatar</label>
-          <DragNDrop id="dnd" />
+          <DragNDrop id="dnd" setAvatar={setAvatar} />
         </div>
 
         <div className="form-ticket">
           <label htmlFor="name">Full Name</label>
-          <input type="text" name="name" id="name" />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
 
         <div className="form-ticket">
@@ -83,6 +103,8 @@ export default function Form() {
             name="git-name"
             id="git-name"
             placeholder="@yourusername"
+            value={gitName}
+            onChange={(e) => setGitName(e.target.value)}
           />
         </div>
 

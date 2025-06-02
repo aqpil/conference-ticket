@@ -2,27 +2,31 @@ import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./dnd.css";
 
-export default function DragNDrop() {
+export default function DragNDrop({ setAvatar }) {
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState("");
 
-  const onDrop = useCallback((acceptedFiles) => {
-    if (acceptedFiles.length > 0) {
-      const file = acceptedFiles[0];
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      if (acceptedFiles.length > 0) {
+        const file = acceptedFiles[0];
 
-      if (file.size > 500 * 1024) {
-        setError("File too large. Please upload a photo under 500KB.");
-        return;
-      }
+        if (file.size > 500 * 1024) {
+          setError("File too large. Please upload a photo under 500KB.");
+          return;
+        }
 
-      setPhoto(
-        Object.assign(file, {
+        const fileWithPreview = Object.assign(file, {
           preview: URL.createObjectURL(file),
-        })
-      );
-      setError(""); // Clear any previous error
-    }
-  }, []);
+        });
+
+        setPhoto(fileWithPreview);
+        setAvatar(fileWithPreview.preview); // Pass preview URL to parent
+        setError("");
+      }
+    },
+    [setAvatar]
+  );
 
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
@@ -34,7 +38,8 @@ export default function DragNDrop() {
 
   const removeImage = () => {
     setPhoto(null);
-    setError(""); // Clear error when image is removed
+    setAvatar(null); // Clear avatar in parent
+    setError("");
   };
 
   return (
