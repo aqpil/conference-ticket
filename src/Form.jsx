@@ -10,7 +10,6 @@ export default function Form({ onSubmit }) {
   const [emailTouched, setEmailTouched] = useState(false);
   const [emailError, setEmailError] = useState("");
 
-  // You can later update this to receive the actual image from DragNDrop
   const [avatar, setAvatar] = useState(null);
 
   const validateEmail = (email) => {
@@ -39,12 +38,11 @@ export default function Form({ onSubmit }) {
       return;
     }
 
-    // Send data up to App.jsx
     onSubmit({
       name,
       gitName,
       email,
-      avatar, // You can update this later to pass the uploaded image
+      avatar,
     });
   };
 

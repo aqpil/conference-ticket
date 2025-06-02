@@ -21,7 +21,7 @@ export default function DragNDrop({ setAvatar }) {
         });
 
         setPhoto(fileWithPreview);
-        setAvatar(fileWithPreview.preview); // Pass preview URL to parent
+        setAvatar(fileWithPreview.preview);
         setError("");
       }
     },
@@ -38,7 +38,7 @@ export default function DragNDrop({ setAvatar }) {
 
   const removeImage = () => {
     setPhoto(null);
-    setAvatar(null); // Clear avatar in parent
+    setAvatar(null);
     setError("");
   };
 
