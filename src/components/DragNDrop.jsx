@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./dnd.css";
+import iconUpload from "../assets/images/icon-upload.svg";
 
 export default function DragNDrop({ setAvatar }) {
   const [photo, setPhoto] = useState(null);
@@ -74,7 +75,7 @@ export default function DragNDrop({ setAvatar }) {
         ) : (
           <div className="upload-prompt">
             <button onClick={open} type="button" className="upload-icon-button">
-              <img src="/src/assets/images/icon-upload.svg" alt="Upload" />
+              <img src={iconUpload} alt="Upload" />
             </button>
             <strong className="upload-text">
               Drag and drop or click to upload
